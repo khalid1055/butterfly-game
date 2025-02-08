@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butterfly Catch Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        #butterfly {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catch the Butterfly! 🦋</h1>
+    <p id="score">Score: 0</p>
+    <div id="game-container">
+        <img id="butterfly" src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Monarch_Butterfly_Danaus_plexippus_on_Milkweed_5797px.jpg" alt="Butterfly">
+    </div>
+    <script>
+        let score = 0;
+        const butterfly = document.getElementById("butterfly");
+        const scoreDisplay = document.getElementById("score");
+
+        function moveButterfly() {
+            const maxX = window.innerWidth - 80;
+            const maxY = window.innerHeight - 80;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            butterfly.style.left = `${randomX}px`;
+            butterfly.style.top = `${randomY}px`;
+        }
+
+        butterfly.addEventListener("click", () => {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+            moveButterfly();
+        });
+
+        moveButterfly();
+    </script>
+</body>
+</html>
